@@ -8,7 +8,7 @@ FROM alpine:${ALPINE_VERSION} as base
 FROM base as build
 
 # renovate: datasource=github-releases depName=hashicorp/terraform
-ARG TERRAFORM_VERSION=1.8.5
+ARG TERRAFORM_VERSION=1.9.2
 # renovate: datasource=github-releases depName=gruntwork-io/terragrunt
 ARG TERRAGRUNT_VERSION=0.59.5
 # renovate: datasource=github-releases depName=terraform-docs/terraform-docs
