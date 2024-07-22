@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM debian:buster as base
+FROM debian:bookworm as base
 
 FROM base
 
