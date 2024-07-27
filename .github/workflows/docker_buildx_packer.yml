@@ -54,3 +54,9 @@ jobs:
             ghcr.io/${{ github.repository }}/packer:${{ env.PACKER_VERSION }}
             ghcr.io/${{ github.repository }}/packer:alpine${{ env.ALPINE_VERSION }}
             ghcr.io/${{ github.repository }}/packer:latest
+
+      - name: Run Slack Notification
+        if: always()
+        uses: opslabhqx/action-slacknotify@v1
+        with:
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
