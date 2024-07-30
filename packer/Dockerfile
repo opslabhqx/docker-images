@@ -8,7 +8,7 @@ FROM alpine:${ALPINE_VERSION} as base
 FROM base as build
 
 # renovate: datasource=github-releases depName=hashicorp/packer
-ARG PACKER_VERSION=1.11.1
+ARG PACKER_VERSION=1.11.2
 
 # Set up architecture-specific variables
 RUN ARCH=$(uname -m) && \
