@@ -25,8 +25,8 @@ RUN apk add --no-cache dpkg curl python3 py3-pip py3-virtualenv libffi-dev gcc m
 RUN export ARCH=$(cat /tmp/ARCH) \
     && curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_$ARCH/session-manager-plugin.deb" -o "session-manager-plugin.deb" \
     && dpkg -x session-manager-plugin.deb session-manager-plugin \
-    && cp session-manager-plugin/usr/local/sessionmanagerplugin/bin/session-manager-plugin /usr/bin/session-manager-plugin \
-    && chmod +x /usr/bin/session-manager-plugin
+    && cp session-manager-plugin/usr/local/sessionmanagerplugin/bin/session-manager-plugin /usr/local/bin/session-manager-plugin \
+    && chmod +x /usr/local/bin/session-manager-plugin
 
 RUN python3 -m venv /venv \
     && . /venv/bin/activate \
@@ -34,7 +34,7 @@ RUN python3 -m venv /venv \
 
 FROM base AS final
 
-COPY --from=build /usr/bin/session-manager-plugin /usr/bin
+COPY --from=build /usr/local/bin/session-manager-plugin /usr/local/bin
 
 RUN apk add --no-cache bash python3 openssh curl make aws-cli \
     && ln -s $(which aws) /bin/aws-cli
