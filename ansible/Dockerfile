@@ -36,7 +36,7 @@ FROM base AS final
 
 COPY --from=build /usr/local/bin/session-manager-plugin /usr/local/bin
 
-RUN apk add --no-cache bash python3 openssh curl make aws-cli \
+RUN apk add --no-cache bash python3 openssh curl make aws-cli libc6-compat \
     && ln -s $(which aws) /bin/aws-cli
 
 # Copy the virtual environment from the build stage
