@@ -8,7 +8,7 @@ FROM alpine:${ALPINE_VERSION} AS base
 FROM base AS build
 
 # renovate: datasource=pypi depName=ansible
-ARG ANSIBLE_VERSION=10.2.0
+ARG ANSIBLE_VERSION=10.3.0
 
 # Set up architecture-specific variables
 RUN ARCH=$(uname -m) && \
