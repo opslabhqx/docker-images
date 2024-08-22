@@ -4,6 +4,8 @@
 
 `terraform` Docker image. It is maintained and published under the `opslabhq` Docker Hub account.
 
+[https://hub.docker.com/r/opslabhq/terraform](https://hub.docker.com/r/opslabhq/terraform)
+
 ## Docker Image
 
 - **Image Name**: `terraform`

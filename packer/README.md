@@ -4,6 +4,8 @@
 
 `packer` Docker image. It is maintained and published under the `opslabhq` Docker Hub account.
 
+[https://hub.docker.com/r/opslabhq/packer](https://hub.docker.com/r/opslabhq/packer)
+
 ## Docker Image
 
 - **Image Name**: `packer`

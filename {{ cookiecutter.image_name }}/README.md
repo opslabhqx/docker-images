@@ -4,6 +4,8 @@
 
 `{{ cookiecutter.image_name }}` Docker image. It is maintained and published under the `{{ cookiecutter.dockerhub_username }}` Docker Hub account.
 
+[https://hub.docker.com/r/{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}](https://hub.docker.com/r/{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }})
+
 ## Docker Image
 
 - **Image Name**: `{{ cookiecutter.image_name }}`

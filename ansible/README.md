@@ -4,6 +4,8 @@
 
 `ansible` Docker image. It is maintained and published under the `opslabhq` Docker Hub account.
 
+[https://hub.docker.com/r/opslabhq/ansible](https://hub.docker.com/r/opslabhq/ansible)
+
 ## Docker Image
 
 - **Image Name**: `ansible`
