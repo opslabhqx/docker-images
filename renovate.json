@@ -20,7 +20,7 @@
   "packageRules": [
     {
       "description": "Automerge non-major updates",
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": ["minor", "major", "patch", "pin", "digest"],
       "automerge": true
     },
     {

@@ -1,5 +1,5 @@
 ---
-name: Build Docker Image Renovate PR for terraform
+name: Build Docker Image Renovate PR for {{ cookiecutter.image_name }}
 
 on:
   merge_group:
@@ -7,14 +7,14 @@ on:
     branches:
       - main
     paths:
-      - 'terraform/**'
+      - '{{ cookiecutter.image_name }}/**'
     types:
       - opened
       - synchronize
       - reopened
 
 jobs:
-  docker-build-terraform:
+  docker-build-{{ cookiecutter.image_name }}:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,11 +30,11 @@ jobs:
       - name: Build and push (Dry run)
         uses: docker/build-push-action@v6
         with:
-          context: terraform
-          file: terraform/Dockerfile
+          context: {{ cookiecutter.image_name }}
+          file: {{ cookiecutter.image_name }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: false
           tags: |
-            opslabhq/terraform:test_pr
+            {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:test_pr

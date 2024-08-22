@@ -14,7 +14,6 @@ ARG TERRAGRUNT_VERSION=0.66.9
 # renovate: datasource=github-releases depName=terraform-docs/terraform-docs
 ARG TERRAFORMDOCS_VERSION=0.18.0
 
-# Set up architecture-specific variables
 RUN ARCH=$(uname -m) && \
     if [ "$ARCH" = "aarch64" ]; then \
         export ARCH=linux_arm64; \
@@ -25,20 +24,17 @@ RUN ARCH=$(uname -m) && \
 
 RUN apk add --no-cache wget unzip
 
-# Install Terraform
 RUN export ARCH=$(cat /tmp/ARCH) \
     && cd /tmp \
     && wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_$ARCH.zip \
     && unzip /tmp/terraform_${TERRAFORM_VERSION}_$ARCH.zip -d /tmp \
     && mv /tmp/terraform /usr/local/bin/terraform
 
-# Install Terragrunt
 RUN export ARCH=$(cat /tmp/ARCH) \
     && cd /tmp \
     && wget -q https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_$ARCH \
     && mv /tmp/terragrunt_$ARCH /usr/local/bin/terragrunt
 
-# Install Terraform Docs
 RUN export ARCH=$(cat /tmp/ARCH | sed 's/_/-/g') \
     && cd /tmp \
     && wget -q https://github.com/terraform-docs/terraform-docs/releases/download/v${TERRAFORMDOCS_VERSION}/terraform-docs-v${TERRAFORMDOCS_VERSION}-$ARCH.tar.gz \
@@ -49,14 +45,11 @@ RUN chmod +x /usr/local/bin/*
 
 FROM base as final
 
-# Install AWS CLI
 RUN apk add --no-cache bash aws-cli \
     && ln -s $(which aws) /bin/aws-cli
 
-# Copy binaries from build stage to final image
 COPY --from=build /usr/local/bin/* /usr/local/bin/
 
-# Clear and enable Alpine caching
 RUN mkdir -p /var/cache/apk \
     && ln -s /var/cache/apk /etc/apk/cache \
     && rm -rf /var/cache/apk/*

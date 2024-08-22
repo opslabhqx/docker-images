@@ -1,13 +1,38 @@
-# docker-images
+# Docker Images
 
-This repository contains Dockerfiles for building Docker images for various tools. It is organized into directories, each with its own Dockerfile.
+This repository contains Dockerfiles for building Docker images for various tools. Each tool has its own directory, with a Dockerfile tailored for it.
 
-The repository is set up to automatically update the Docker images and rebuild them using Renovate. Renovate is configured to monitor the Dockerfile in each directory and create pull requests to update them when a new version is available.
+The repository is configured to automatically update and rebuild Docker images using Renovate. Renovate monitors each Dockerfile and creates pull requests to update them when new versions are available.
 
-[![Docker Image for Ansible](https://github.com/opslabhqx/docker-images/actions/workflows/docker_buildx_ansible.yml/badge.svg)](https://github.com/opslabhqx/docker-images/actions/workflows/docker_buildx_ansible.yml)
-[![Docker Image for Packer](https://github.com/opslabhqx/docker-images/actions/workflows/docker_buildx_packer.yml/badge.svg)](https://github.com/opslabhqx/docker-images/actions/workflows/docker_buildx_packer.yml)
-[![Docker Image for Terraform](https://github.com/opslabhqx/docker-images/actions/workflows/docker_buildx_terraform.yml/badge.svg)](https://github.com/opslabhqx/docker-images/actions/workflows/docker_buildx_terraform.yml)
-[![Docker Image for Tor](https://github.com/opslabhqx/docker-images/actions/workflows/docker_buildx_tor.yml/badge.svg)](https://github.com/opslabhqx/docker-images/actions/workflows/docker_buildx_tor.yml)
+## Cookiecutter Template
+
+This repository uses [Cookiecutter](https://cookiecutter.readthedocs.io/en/latest/) for managing Docker image templates. When initializing a new Docker image, Cookiecutter will prompt for the following variables:
+
+1. **image_name**: The name of the Docker image (e.g., `terraform`).
+2. **IMAGE_NAME**: The uppercase version of the image name (e.g., `TERRAFORM`).
+3. **dockerhub_username**: Your Docker Hub username (e.g., `opslabhq`).
+4. **image_platforms**: The platforms to support (e.g., `linux/amd64,linux/arm64`).
+5. **image_datasource**: The datasource for version updates (e.g., `https://docs.renovatebot.com/modules/datasource/`).
+6. **image_depname**: The dependency name for the Docker image (e.g., `hashicorp/terraform`).
+
+To generate a new Docker image template, navigate to the root of this repository and run:
+
+```
+cookiecutter .
+```
+
+Follow the prompts to input the required information.
+
+## Contributing
+
+Contributions are welcome! To contribute to this project:
+
+1. Fork the repository and clone your fork locally.
+2. Create a new branch for your changes.
+3. Make your changes and commit them with descriptive messages.
+4. Push your changes to your fork and create a pull request against the main repository.
+
+Please ensure that your changes adhere to the project's coding standards and pass all tests.
 
 ## License
 

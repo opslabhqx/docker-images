@@ -1,5 +1,5 @@
 ---
-name: Build and Push Docker Images for Renovate PR
+name: Build Docker Image Renovate PR for ansible
 
 on:
   merge_group:
@@ -27,17 +27,6 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Extract version from Dockerfile
-        id: extract_version
-        run: |
-          cd ansible
-          ALPINE_VERSION=$(grep -oP '^ARG ALPINE_VERSION=\K.*' Dockerfile)
-          echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
-          echo "ALPINE_VERSION=${ALPINE_VERSION}"
-          ANSIBLE_VERSION=$(grep -oP "^ARG ANSIBLE_VERSION=\K.*" Dockerfile)
-          echo "ANSIBLE_VERSION=${ANSIBLE_VERSION}" >> $GITHUB_ENV
-          echo "ANSIBLE_VERSION=${ANSIBLE_VERSION}"
-
       - name: Build and push (Dry run)
         uses: docker/build-push-action@v6
         with:
@@ -48,13 +37,4 @@ jobs:
           cache-to: type=gha,mode=max
           push: false
           tags: |
-            ghcr.io/${{ github.repository }}/ansible:${{ env.ANSIBLE_VERSION }}-alpine${{ env.ALPINE_VERSION }}
-            ghcr.io/${{ github.repository }}/ansible:${{ env.ANSIBLE_VERSION }}
-            ghcr.io/${{ github.repository }}/ansible:alpine${{ env.ALPINE_VERSION }}
-            ghcr.io/${{ github.repository }}/ansible:latest
-
-      - name: Run Slack Notification
-        if: always()
-        uses: opslabhqx/action-slacknotify@v1
-        with:
-          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+            opslabhq/ansible:test_pr
