@@ -30,15 +30,9 @@ jobs:
       - name: Build and push (Dry run)
         uses: docker/build-push-action@v6
         with:
-<<<<<<< HEAD:.github/workflows/docker_buildx_miniconda-alpine_pr.yml
-          context: miniconda-alpine
-          file: miniconda-alpine/Dockerfile
-          platforms: linux/amd64
-=======
           context: miniconda
           file: miniconda/Dockerfile
           platforms: linux/amd64,linux/arm64
->>>>>>> 4a9a6ea (Update files):.github/workflows/docker_buildx_miniconda_pr.yml
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: false
