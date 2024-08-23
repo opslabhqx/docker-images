@@ -34,9 +34,9 @@ jobs:
         run: |
           cd {{ cookiecutter.image_name }}
 
-          {{ cookiecutter.IMAGE_BASE }}_VERSION=$(grep -oP '^ARG {{ cookiecutter.IMAGE_BASE }}_VERSION=\K.*' Dockerfile)
-          echo "{{ cookiecutter.IMAGE_BASE }}_VERSION={% raw %}${{% endraw %}{{ cookiecutter.IMAGE_BASE }}_VERSION{% raw %}}{% endraw %}" >> $GITHUB_ENV
-          echo "{{ cookiecutter.IMAGE_BASE }}_VERSION={% raw %}${{% endraw %}{{ cookiecutter.IMAGE_BASE }}_VERSION{% raw %}}{% endraw %}"
+          {{ cookiecutter.BASE_IMAGE }}_VERSION=$(grep -oP '^ARG {{ cookiecutter.BASE_IMAGE }}_VERSION=\K.*' Dockerfile)
+          echo "{{ cookiecutter.BASE_IMAGE }}_VERSION={% raw %}${{% endraw %}{{ cookiecutter.BASE_IMAGE }}_VERSION{% raw %}}{% endraw %}" >> $GITHUB_ENV
+          echo "{{ cookiecutter.BASE_IMAGE }}_VERSION={% raw %}${{% endraw %}{{ cookiecutter.BASE_IMAGE }}_VERSION{% raw %}}{% endraw %}"
 
           IMAGE_VERSION=$(grep -oP "^ARG {{ cookiecutter.IMAGE_NAME }}_VERSION=\K.*" Dockerfile)
           echo "IMAGE_VERSION=${IMAGE_VERSION}" >> $GITHUB_ENV
@@ -52,7 +52,7 @@ jobs:
           cache-to: type=gha,mode=max
           push: true
           tags: |
-            {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{% raw %}${{ env.IMAGE_VERSION }}{% endraw %}-{{ cookiecutter.image_base }}{% raw %}${{ env.{% endraw %}{{ cookiecutter.IMAGE_BASE }}_VERSION {% raw %}}}{% endraw %}
+            {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{% raw %}${{ env.IMAGE_VERSION }}{% endraw %}-{{ cookiecutter.base_image }}{% raw %}${{ env.{% endraw %}{{ cookiecutter.BASE_IMAGE }}_VERSION {% raw %}}}{% endraw %}
             {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{% raw %}${{ env.IMAGE_VERSION }}{% endraw %}
-            {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{{ cookiecutter.image_base }}{% raw %}${{ env.{% endraw %}{{ cookiecutter.IMAGE_BASE }}_VERSION {% raw %}}}{% endraw %}
+            {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{{ cookiecutter.base_image }}{% raw %}${{ env.{% endraw %}{{ cookiecutter.BASE_IMAGE }}_VERSION {% raw %}}}{% endraw %}
             {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:latest

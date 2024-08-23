@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 
-# renovate: datasource=docker depName={{ cookiecutter.image_base }}
-ARG {{ cookiecutter.IMAGE_BASE }}_VERSION=3.20.2
+# renovate: datasource=docker depName={{ cookiecutter.base_image }}
+ARG {{ cookiecutter.BASE_IMAGE }}_VERSION=1.0.0
 
-FROM {{ cookiecutter.image_base }}:{% raw %}${{% endraw %}{{ cookiecutter.IMAGE_BASE }}_VERSION{% raw %}}{% endraw %} AS base
+FROM {{ cookiecutter.base_image }}:{% raw %}${{% endraw %}{{ cookiecutter.BASE_IMAGE }}_VERSION{% raw %}}{% endraw %} AS base
 
 FROM base AS build
 
@@ -28,10 +28,5 @@ RUN export ARCH=$(cat /tmp/ARCH) \
 FROM base AS final
 
 ## COPY --from=build . .
-
-## Clear and enable Alpine caching
-RUN mkdir -p /var/cache/apk \
-    && ln -s /var/cache/apk /etc/apk/cache \
-    && rm -rf /var/cache/apk/*
 
 USER root

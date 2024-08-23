@@ -1,8 +1,8 @@
 {
     "image_name": "image_name",
     "IMAGE_NAME": "{{ cookiecutter.image_name | replace('-', '_') | upper }}",
-    "image_base": "alpine",
-    "IMAGE_BASE": "{{ cookiecutter.image_base | replace('-', '_') | upper }}",
+    "base_image": "alpine",
+    "BASE_IMAGE": "{{ cookiecutter.base_image | replace('-', '_') | upper }}",
     "dockerhub_username": "exampleuser",
     "image_platforms": "linux/amd64,linux/arm64",
     "image_datasource": "https://docs.renovatebot.com/modules/datasource/",

@@ -18,11 +18,11 @@
 
 The Docker image is tagged as follows:
 
-- `{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:latest` - The latest stable version.
-- `{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{% raw %}${{ env.IMAGE_VERSION }}{% endraw %}-alpine{% raw %}${{ env.ALPINE_VERSION }}{% endraw %}` - Specific version with Alpine tag.
-- `{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{% raw %}${{ env.IMAGE_VERSION }}{% endraw %}` - Specific version.
-- `{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:alpine{% raw %}${{ env.ALPINE_VERSION }}{% endraw %}` - Alpine version.
-
+- `{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{% raw %}${{ env.IMAGE_VERSION }}{% endraw %}-{{ cookiecutter.base_image }}{% raw %}${{ env.{% endraw %}{{ cookiecutter.BASE_IMAGE }}_VERSION {% raw %}}}{% endraw %}`
+- `{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{% raw %}${{ env.IMAGE_VERSION }}{% endraw %}`
+- `{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{{ cookiecutter.base_image }}{% raw %}${{ env.{% endraw %}{{ cookiecutter.BASE_IMAGE }}_VERSION {% raw %}}}{% endraw %}`
+- `{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:latest`
+ASE
 ## Usage
 
 To pull and run the Docker image, use the following commands:
