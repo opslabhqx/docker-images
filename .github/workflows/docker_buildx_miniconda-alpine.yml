@@ -1,0 +1,58 @@
+---
+name: Build and Push Docker Image for miniconda-alpine
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'miniconda-alpine/**'
+  workflow_dispatch:
+
+jobs:
+  docker-build-miniconda-alpine:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to DockerHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          username: opslabhq
+          password: ${{ secrets.DOCKER_SECRET }}
+
+      - name: Extract version from Dockerfile
+        id: extract_version
+        run: |
+          cd miniconda-alpine
+
+          ALPINE_VERSION=$(grep -oP '^ARG ALPINE_VERSION=\K.*' Dockerfile)
+          echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
+          echo "ALPINE_VERSION=${ALPINE_VERSION}"
+
+          IMAGE_VERSION=$(grep -oP "^ARG MINICONDA_ALPINE_VERSION=\K.*" Dockerfile)
+          echo "IMAGE_VERSION=${IMAGE_VERSION}" >> $GITHUB_ENV
+          echo "IMAGE_VERSION=${IMAGE_VERSION}"
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: miniconda-alpine
+          file: miniconda-alpine/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          push: true
+          tags: |
+            opslabhq/miniconda:${{ env.IMAGE_VERSION }}-alpine${{ env.ALPINE_VERSION }}
+            opslabhq/miniconda:${{ env.IMAGE_VERSION }}
+            opslabhq/miniconda:alpine${{ env.ALPINE_VERSION }}
+            opslabhq/miniconda:latest

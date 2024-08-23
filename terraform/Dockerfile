@@ -3,7 +3,7 @@
 # renovate: datasource=docker depName=alpine
 ARG ALPINE_VERSION=3.20.2
 
-FROM alpine:${ALPINE_VERSION} as base
+FROM alpine:${ALPINE_VERSION} AS base
 
 FROM base as build
 
@@ -43,7 +43,7 @@ RUN export ARCH=$(cat /tmp/ARCH | sed 's/_/-/g') \
 
 RUN chmod +x /usr/local/bin/*
 
-FROM base as final
+FROM base AS final
 
 RUN apk add --no-cache bash aws-cli \
     && ln -s $(which aws) /bin/aws-cli

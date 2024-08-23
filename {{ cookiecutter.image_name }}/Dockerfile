@@ -3,9 +3,9 @@
 # renovate: datasource=docker depName=alpine
 ARG ALPINE_VERSION=3.20.2
 
-FROM alpine:${ALPINE_VERSION} as base
+FROM alpine:${ALPINE_VERSION} AS base
 
-FROM base as build
+FROM base AS build
 
 # renovate: datasource={{ cookiecutter.image_datasource }} depName={{ cookiecutter.image_depname }}
 ARG {{ cookiecutter.IMAGE_NAME }}_VERSION=1.0.0
@@ -25,7 +25,7 @@ RUN apk add --no-cache bash
 RUN export ARCH=$(cat /tmp/ARCH) \
     && echo $ARCH
 
-FROM base as final
+FROM base AS final
 
 ## COPY --from=build . .
 
