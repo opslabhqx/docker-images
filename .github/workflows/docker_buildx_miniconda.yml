@@ -1,16 +1,16 @@
 ---
-name: Build and Push Docker Image for miniconda-ubuntu
+name: Build and Push Docker Image for miniconda
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'miniconda-ubuntu/**'
+      - 'miniconda/**'
   workflow_dispatch:
 
 jobs:
-  docker-build-miniconda-ubuntu:
+  docker-build-miniconda:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,7 +32,7 @@ jobs:
       - name: Extract version from Dockerfile
         id: extract_version
         run: |
-          cd miniconda-ubuntu
+          cd miniconda
 
           UBUNTU_VERSION=$(grep -oP '^ARG UBUNTU_VERSION=\K.*' Dockerfile)
           echo "UBUNTU_VERSION=${UBUNTU_VERSION}" >> $GITHUB_ENV
@@ -47,12 +47,10 @@ jobs:
         with:
           context: miniconda-ubuntu
           file: miniconda-ubuntu/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: true
           tags: |
             opslabhq/miniconda:${{ env.IMAGE_VERSION }}-ubuntu${{ env.UBUNTU_VERSION }}
-            opslabhq/miniconda:${{ env.IMAGE_VERSION }}
             opslabhq/miniconda:ubuntu${{ env.UBUNTU_VERSION }}
-            opslabhq/miniconda:latest
