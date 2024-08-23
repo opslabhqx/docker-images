@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 
-# renovate: datasource=docker depName=alpine
-ARG ALPINE_VERSION=3.20.2
+# renovate: datasource=docker depName={{ cookiecutter.image_base }}
+ARG {{ cookiecutter.IMAGE_BASE }}_VERSION=3.20.2
 
-FROM alpine:${ALPINE_VERSION} AS base
+FROM {{ cookiecutter.image_base }}:{% raw %}${{% endraw %}{{ cookiecutter.IMAGE_BASE }}_VERSION{% raw %}}{% endraw %} AS base
 
 FROM base AS build
 

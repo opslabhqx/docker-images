@@ -34,9 +34,9 @@ jobs:
         run: |
           cd {{ cookiecutter.image_name }}
 
-          ALPINE_VERSION=$(grep -oP '^ARG ALPINE_VERSION=\K.*' Dockerfile)
-          echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
-          echo "ALPINE_VERSION=${ALPINE_VERSION}"
+          {{ cookiecutter.IMAGE_BASE }}_VERSION=$(grep -oP '^ARG {{ cookiecutter.IMAGE_BASE }}_VERSION=\K.*' Dockerfile)
+          echo "{{ cookiecutter.IMAGE_BASE }}_VERSION={% raw %}${{% endraw %}{{ cookiecutter.IMAGE_BASE }}_VERSION{% raw %}}{% endraw %}" >> $GITHUB_ENV
+          echo "{{ cookiecutter.IMAGE_BASE }}_VERSION={% raw %}${{% endraw %}{{ cookiecutter.IMAGE_BASE }}_VERSION{% raw %}}{% endraw %}"
 
           IMAGE_VERSION=$(grep -oP "^ARG {{ cookiecutter.IMAGE_NAME }}_VERSION=\K.*" Dockerfile)
           echo "IMAGE_VERSION=${IMAGE_VERSION}" >> $GITHUB_ENV
@@ -52,7 +52,7 @@ jobs:
           cache-to: type=gha,mode=max
           push: true
           tags: |
-            {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{% raw %}${{ env.IMAGE_VERSION }}{% endraw %}-alpine{% raw %}${{ env.ALPINE_VERSION }}{% endraw %}
+            {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{% raw %}${{ env.IMAGE_VERSION }}{% endraw %}-{{ cookiecutter.image_base }}{% raw %}${{ env.{% endraw %}{{ cookiecutter.IMAGE_BASE }}_VERSION {% raw %}}}{% endraw %}
             {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{% raw %}${{ env.IMAGE_VERSION }}{% endraw %}
-            {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:alpine{% raw %}${{ env.ALPINE_VERSION }}{% endraw %}
+            {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{{ cookiecutter.image_base }}{% raw %}${{ env.{% endraw %}{{ cookiecutter.IMAGE_BASE }}_VERSION {% raw %}}}{% endraw %}
             {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:latest
