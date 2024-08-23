@@ -23,7 +23,11 @@ RUN ARCH=$(uname -m) && \
 
 RUN export ARCH=$(cat /tmp/ARCH) \
     && curl -fsSL https://repo.anaconda.com/miniconda/Miniconda3-py312_$MINICONDA_VERSION-0-Linux-$ARCH.sh -o /tmp/miniconda.sh \
-    && bash /tmp/miniconda.sh -b \
+    && bash /tmp/miniconda.sh -b -p /opt/conda \
     && rm /tmp/miniconda.sh
+
+ENV PATH=/opt/conda/bin:$PATH
+
+WORKDIR /root
 
 USER root
