@@ -11,7 +11,7 @@ RUN apt-get update \
 FROM base AS final
 
 # renovate: datasource=github-releases depName=conda/conda
-ARG MINICONDA_VERSION=24.5.0
+ARG MINICONDA_VERSION=24.7.1
 
 RUN ARCH=$(uname -m) && \
     if [ "$ARCH" = "aarch64" ]; then \
