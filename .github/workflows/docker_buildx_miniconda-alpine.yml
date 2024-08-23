@@ -53,6 +53,4 @@ jobs:
           push: true
           tags: |
             opslabhq/miniconda:${{ env.IMAGE_VERSION }}-alpine${{ env.ALPINE_VERSION }}
-            opslabhq/miniconda:${{ env.IMAGE_VERSION }}
             opslabhq/miniconda:alpine${{ env.ALPINE_VERSION }}
-            opslabhq/miniconda:latest
