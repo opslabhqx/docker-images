@@ -45,12 +45,14 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: miniconda-ubuntu
-          file: miniconda-ubuntu/Dockerfile
-          platforms: linux/amd64
+          context: miniconda
+          file: miniconda/Dockerfile
+          platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: true
           tags: |
             opslabhq/miniconda:${{ env.IMAGE_VERSION }}-ubuntu${{ env.UBUNTU_VERSION }}
+            opslabhq/miniconda:${{ env.IMAGE_VERSION }}
             opslabhq/miniconda:ubuntu${{ env.UBUNTU_VERSION }}
+            opslabhq/miniconda:latest
