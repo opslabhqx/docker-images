@@ -38,7 +38,7 @@ jobs:
           echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
           echo "ALPINE_VERSION=${ALPINE_VERSION}"
 
-          IMAGE_VERSION=$(grep -oP "^ARG MINICONDA_ALPINE_VERSION=\K.*" Dockerfile)
+          IMAGE_VERSION=$(grep -oP "^ARG MINICONDA_VERSION=\K.*" Dockerfile)
           echo "IMAGE_VERSION=${IMAGE_VERSION}" >> $GITHUB_ENV
           echo "IMAGE_VERSION=${IMAGE_VERSION}"
 

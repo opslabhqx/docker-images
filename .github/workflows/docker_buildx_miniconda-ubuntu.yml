@@ -38,7 +38,7 @@ jobs:
           echo "UBUNTU_VERSION=${UBUNTU_VERSION}" >> $GITHUB_ENV
           echo "UBUNTU_VERSION=${UBUNTU_VERSION}"
 
-          IMAGE_VERSION=$(grep -oP "^ARG MINICONDA_UBUNTU_VERSION=\K.*" Dockerfile)
+          IMAGE_VERSION=$(grep -oP "^ARG MINICONDA_VERSION=\K.*" Dockerfile)
           echo "IMAGE_VERSION=${IMAGE_VERSION}" >> $GITHUB_ENV
           echo "IMAGE_VERSION=${IMAGE_VERSION}"
 
