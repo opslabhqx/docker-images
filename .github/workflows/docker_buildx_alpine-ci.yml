@@ -34,7 +34,7 @@ jobs:
         run: |
           cd alpine-ci
 
-          IMAGE_VERSION=$(grep -oP "^ARG ALPINE_CI_VERSION=\K.*" Dockerfile)
+          IMAGE_VERSION=$(grep -oP "^ARG IMAGE_VERSION=\K.*" Dockerfile)
           echo "IMAGE_VERSION=${IMAGE_VERSION}" >> $GITHUB_ENV
           echo "IMAGE_VERSION=${IMAGE_VERSION}"
 
