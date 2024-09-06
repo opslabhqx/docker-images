@@ -22,7 +22,7 @@ The Docker image is tagged as follows:
 - `{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{% raw %}${{ env.IMAGE_VERSION }}{% endraw %}`
 - `{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:{{ cookiecutter.base_image }}{% raw %}${{ env.{% endraw %}{{ cookiecutter.BASE_IMAGE }}_VERSION {% raw %}}}{% endraw %}`
 - `{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.image_name }}:latest`
-ASE
+
 ## Usage
 
 To pull and run the Docker image, use the following commands:
