@@ -28,5 +28,8 @@
       "automerge": true
     }
   ],
-  "platformAutomerge": true
+  "platformAutomerge": true,
+  "ignorePaths": [
+    "{{ cookiecutter.image_name }}/**"
+  ]
 }
