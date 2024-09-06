@@ -7,12 +7,8 @@ FROM alpine:${ALPINE_VERSION} AS base
 
 FROM base
 
-RUN apk add --no-cache bash
+RUN apk add --no-cache sudo bash
 
 FROM base AS final
-
-RUN mkdir -p /var/cache/apk \
-    && ln -s /var/cache/apk /etc/apk/cache \
-    && rm -rf /var/cache/apk/*
 
 USER root
