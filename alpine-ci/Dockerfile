@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # renovate: datasource=docker depName=opslabhq/alpine
-ARG IMAGE_VERSION=3.20.2
+ARG IMAGE_VERSION=3.20.3
 
 FROM opslabhq/alpine:${IMAGE_VERSION} AS base
 
