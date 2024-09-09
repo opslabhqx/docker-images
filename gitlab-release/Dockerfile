@@ -10,7 +10,7 @@ FROM base
 FROM base AS build
 
 # renovate: datasource=gitlab-releases depName=gitlab-org/release-cli
-ARG GITLAB_RELEASE_VERSION=v0.16.0
+ARG GITLAB_RELEASE_VERSION=v0.18.0
 
 RUN ARCH=$(uname -m) && \
     if [ "$ARCH" = "aarch64" ]; then \
