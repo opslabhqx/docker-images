@@ -8,7 +8,7 @@ FROM alpine:${ALPINE_VERSION} AS base
 FROM base AS build
 
 # renovate: datasource=pypi depName=ansible
-ARG ANSIBLE_VERSION=10.3.0
+ARG ANSIBLE_VERSION=10.4.0
 
 RUN ARCH=$(uname -m) && \
     if [ "$ARCH" = "aarch64" ]; then \
