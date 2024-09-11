@@ -8,7 +8,7 @@ FROM alpine:${ALPINE_VERSION} AS base
 FROM base AS final
 
 # renovate: datasource=npm depName=serverless
-ARG SERVERLESS_VERSION=4.2.5
+ARG SERVERLESS_VERSION=4.3.2
 
 RUN apk add --no-cache bash nodejs npm aws-cli \
     && ln -s $(which aws) /bin/aws-cli
