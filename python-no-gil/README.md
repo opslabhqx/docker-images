@@ -10,7 +10,7 @@
 
 - **Image Name**: `python-no-gil`
 - **Docker Hub Username**: `opslabhq`
-- **Supported Platforms**: `linux/amd64,linux/arm64`
+- **Supported Platforms**: `linux/amd64`
 - **Datasource**: `github-tags`
 - **Depname**: `python/cpython`
 
