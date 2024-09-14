@@ -5,8 +5,6 @@ ARG IMAGE_VERSION=3.20.3
 
 FROM opslabhq/alpine-ci:${IMAGE_VERSION} AS base
 
-FROM base
-
 FROM base AS build
 
 # renovate: datasource=gitlab-releases depName=gitlab-org/release-cli

@@ -5,8 +5,6 @@ ARG IMAGE_VERSION=3.20.3
 
 FROM opslabhq/alpine:${IMAGE_VERSION} AS base
 
-FROM base
-
 RUN apk add --no-cache aws-cli curl jq \
     && ln -s $(which aws) /bin/aws-cli
 

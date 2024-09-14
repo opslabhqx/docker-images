@@ -5,8 +5,6 @@ ARG ALPINE_VERSION=3.20.3
 
 FROM alpine:${ALPINE_VERSION} AS base
 
-FROM base
-
 RUN apk add --no-cache sudo bash
 
 FROM base AS final

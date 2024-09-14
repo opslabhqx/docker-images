@@ -5,10 +5,7 @@ ARG {{ cookiecutter.BASE_IMAGE }}_VERSION=1.0.0
 
 FROM {{ cookiecutter.base_image }}:{% raw %}${{% endraw %}{{ cookiecutter.BASE_IMAGE }}_VERSION{% raw %}}{% endraw %} AS base
 
-FROM base AS build
-
-# renovate: datasource={{ cookiecutter.image_datasource }} depName={{ cookiecutter.image_depname }}
-ARG {{ cookiecutter.IMAGE_NAME }}_VERSION=1.0.0
+FROM base
 
 ## Set up architecture-specific variables
 RUN ARCH=$(uname -m) && \
@@ -20,6 +17,11 @@ RUN ARCH=$(uname -m) && \
     && echo $ARCH > /tmp/ARCH
 
 RUN apk add --no-cache bash
+
+FROM base AS build
+
+# renovate: datasource={{ cookiecutter.image_datasource }} depName={{ cookiecutter.image_depname }}
+ARG {{ cookiecutter.IMAGE_NAME }}_VERSION=1.0.0
 
 ## Main
 RUN export ARCH=$(cat /tmp/ARCH) \
