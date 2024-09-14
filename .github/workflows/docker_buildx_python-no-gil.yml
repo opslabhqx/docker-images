@@ -38,7 +38,7 @@ jobs:
           echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
           echo "ALPINE_VERSION=${ALPINE_VERSION}"
 
-          PYTHON_VERSION=$(grep -oP "^ARG PYTHON_NO_GIL_VERSION=\K.*" Dockerfile)
+          PYTHON_VERSION=$(grep -oP "^ARG PYTHON_VERSION=\K.*" Dockerfile)
           echo "PYTHON_VERSION=${PYTHON_VERSION}" >> $GITHUB_ENV
           echo "PYTHON_VERSION=${PYTHON_VERSION}"
 
