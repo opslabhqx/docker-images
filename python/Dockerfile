@@ -12,7 +12,6 @@ FROM base AS build
 # renovate: datasource=github-tags depName=python/cpython
 ARG PYTHON_VERSION=3.10.15
 
-## Main
 RUN apk add --no-cache git build-base zlib-dev ncurses-dev gdbm-dev nss-dev openssl-dev sqlite-dev readline-dev libffi-dev wget bzip2-dev \
     && git clone https://github.com/python/cpython.git -b v$PYTHON_VERSION \
     && cd cpython \
@@ -24,5 +23,6 @@ RUN apk add --no-cache git build-base zlib-dev ncurses-dev gdbm-dev nss-dev open
 FROM base AS final
 
 COPY --from=build /usr/local/bin/* /usr/local/bin
+COPY --from=build /usr/local/lib/python3.10 /usr/local/lib/python3.10
 
 USER root
