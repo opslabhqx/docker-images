@@ -20,9 +20,9 @@ RUN apk add --no-cache git build-base zlib-dev ncurses-dev gdbm-dev nss-dev open
     && sudo make install \
     && rm -rf /cpython
 
-# FROM base AS final
+FROM base AS final
 
-# COPY --from=build /usr/local/bin/* /usr/local/bin
-# COPY --from=build /usr/local/lib/* /usr/local/lib
+COPY --from=build /usr/local/bin/* /usr/local/bin
+COPY --from=build /usr/local/lib /usr/local/lib
 
-# USER root
+USER root
