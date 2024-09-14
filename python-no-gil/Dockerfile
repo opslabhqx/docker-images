@@ -23,6 +23,6 @@ RUN apk add --no-cache git build-base zlib-dev ncurses-dev gdbm-dev nss-dev open
 FROM base AS final
 
 COPY --from=build /usr/local/bin/* /usr/local/bin
-COPY --from=build /usr/local/lib /usr/local
+COPY --from=build /usr/local/python* /usr/local/lib
 
 USER root
