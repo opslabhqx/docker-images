@@ -10,7 +10,7 @@ RUN apk add --no-cache sudo bash
 FROM base AS build
 
 # renovate: datasource=github-tags depName=python/cpython
-ARG PYTHON_VERSION=3.10.15
+ARG PYTHON_VERSION=3.12.6
 
 RUN apk add --no-cache git build-base zlib-dev ncurses-dev gdbm-dev nss-dev openssl-dev sqlite-dev readline-dev libffi-dev wget bzip2-dev \
     && git clone https://github.com/python/cpython.git -b v$PYTHON_VERSION \
