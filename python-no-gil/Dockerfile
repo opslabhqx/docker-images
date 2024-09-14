@@ -12,7 +12,7 @@ FROM base AS build
 # renovate: datasource=github-tags depName=python/cpython
 ARG PYTHON_VERSION=3.13.0rc2
 
-RUN apk add --no-cache git build-base zlib-dev ncurses-dev gdbm-dev nss-dev openssl-dev sqlite-dev readline-dev libffi-dev wget bzip2-dev \
+RUN apk add --no-cache git build-base zlib-dev ncurses-dev gdbm-dev nss-dev openssl-dev sqlite-dev readline-dev libffi-dev wget bzip2-dev xz-dev tk-dev util-linux-dev \
     && git clone https://github.com/python/cpython.git -b v$PYTHON_VERSION \
     && cd cpython \
     && ./configure --disable-gil --enable-optimizations \
