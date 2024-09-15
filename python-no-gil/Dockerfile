@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # renovate: datasource=docker depName=ubuntu
-ARG UBUNTU_VERSION=oracular
+ARG UBUNTU_VERSION=oracular-20240617
 
 FROM ubuntu:${UBUNTU_VERSION} AS base
 
