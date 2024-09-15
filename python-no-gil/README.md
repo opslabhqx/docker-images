@@ -18,9 +18,9 @@
 
 The Docker image is tagged as follows:
 
-- `opslabhq/python-no-gil:${{ env.PYTHON_VERSION }}-alpine${{ env.ALPINE_VERSION }}`
+- `opslabhq/python-no-gil:${{ env.PYTHON_VERSION }}-ubuntu${{ env.UBUNTU_VERSION }}`
 - `opslabhq/python-no-gil:${{ env.PYTHON_VERSION }}`
-- `opslabhq/python-no-gil:alpine${{ env.ALPINE_VERSION }}`
+- `opslabhq/python-no-gil:ubuntu${{ env.UBUNTU_VERSION }}`
 - `opslabhq/python-no-gil:latest`
 
 ## Usage
