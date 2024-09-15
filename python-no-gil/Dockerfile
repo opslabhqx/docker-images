@@ -5,7 +5,8 @@ ARG UBUNTU_VERSION=oracular
 
 FROM ubuntu:${UBUNTU_VERSION} AS base
 
-RUN apt-get update
+RUN $(which sudo) apt-get update \
+    && $(which sudo) apt-get install -y sudo
 
 FROM base AS build
 
