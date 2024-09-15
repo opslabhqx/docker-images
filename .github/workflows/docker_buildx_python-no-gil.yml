@@ -34,9 +34,9 @@ jobs:
         run: |
           cd python-no-gil
 
-          ALPINE_VERSION=$(grep -oP '^ARG ALPINE_VERSION=\K.*' Dockerfile)
-          echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
-          echo "ALPINE_VERSION=${ALPINE_VERSION}"
+          UBUNTU_VERSION=$(grep -oP '^ARG UBUNTU_VERSION=\K.*' Dockerfile)
+          echo "UBUNTU_VERSION=${UBUNTU_VERSION}" >> $GITHUB_ENV
+          echo "UBUNTU_VERSION=${UBUNTU_VERSION}"
 
           PYTHON_VERSION=$(grep -oP "^ARG PYTHON_VERSION=\K.*" Dockerfile)
           echo "PYTHON_VERSION=${PYTHON_VERSION}" >> $GITHUB_ENV
@@ -47,12 +47,12 @@ jobs:
         with:
           context: python-no-gil
           file: python-no-gil/Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: true
           tags: |
-            opslabhq/python-no-gil:${{ env.PYTHON_VERSION }}-alpine${{ env.ALPINE_VERSION }}
+            opslabhq/python-no-gil:${{ env.PYTHON_VERSION }}-ubuntu${{ env.UBUNTU_VERSION }}
             opslabhq/python-no-gil:${{ env.PYTHON_VERSION }}
-            opslabhq/python-no-gil:alpine${{ env.ALPINE_VERSION }}
+            opslabhq/python-no-gil:ubuntu${{ env.UBUNTU_VERSION }}
             opslabhq/python-no-gil:latest

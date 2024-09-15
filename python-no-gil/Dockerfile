@@ -1,18 +1,18 @@
 # syntax=docker/dockerfile:1
 
-# renovate: datasource=docker depName=alpine
-ARG ALPINE_VERSION=3.20.3
+# renovate: datasource=docker depName=ubuntu
+ARG UBUNTU_VERSION=oracular
 
-FROM alpine:${ALPINE_VERSION} AS base
+FROM ubuntu:${UBUNTU_VERSION} AS base
 
-RUN apk add --no-cache sudo bash
+RUN apt-get update
 
 FROM base AS build
 
 # renovate: datasource=github-tags depName=python/cpython
 ARG PYTHON_VERSION=3.13.0rc2
 
-RUN apk add --no-cache git build-base zlib-dev ncurses-dev gdbm-dev nss-dev openssl-dev sqlite-dev readline-dev libffi-dev wget bzip2-dev xz-dev tk-dev util-linux-dev \
+RUN sudo apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev wget libbz2-dev \
     && git clone https://github.com/python/cpython.git -b v$PYTHON_VERSION \
     && cd cpython \
     && ./configure --disable-gil --enable-optimizations \
