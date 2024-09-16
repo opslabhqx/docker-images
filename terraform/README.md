@@ -19,9 +19,9 @@
 The Docker image is tagged as follows:
 
 - `opslabhq/terraform:latest` - The latest stable version.
-- `opslabhq/terraform:${{ env.IMAGE_VERSION }}-alpine${{ env.ALPINE_VERSION }}` - Specific version with Alpine tag.
-- `opslabhq/terraform:${{ env.IMAGE_VERSION }}` - Specific version.
-- `opslabhq/terraform:alpine${{ env.ALPINE_VERSION }}` - Alpine version.
+- `opslabhq/terraform:${{ env.TERRAFORM_VERSION }}-alpine${{ env.IMAGE_VERSION }}` - Specific version with Alpine tag.
+- `opslabhq/terraform:${{ env.TERRAFORM_VERSION }}` - Specific version.
+- `opslabhq/terraform:alpine${{ env.IMAGE_VERSION }}` - Alpine version.
 
 ## Usage
 

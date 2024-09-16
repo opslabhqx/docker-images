@@ -34,13 +34,13 @@ jobs:
         run: |
           cd terraform
 
-          ALPINE_VERSION=$(grep -oP '^ARG ALPINE_VERSION=\K.*' Dockerfile)
-          echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
-          echo "ALPINE_VERSION=${ALPINE_VERSION}"
-
-          IMAGE_VERSION=$(grep -oP "^ARG TERRAFORM_VERSION=\K.*" Dockerfile)
+          IMAGE_VERSION=$(grep -oP '^ARG IMAGE_VERSION=\K.*' Dockerfile)
           echo "IMAGE_VERSION=${IMAGE_VERSION}" >> $GITHUB_ENV
           echo "IMAGE_VERSION=${IMAGE_VERSION}"
+
+          TERRAFORM_VERSION=$(grep -oP "^ARG TERRAFORM_VERSION=\K.*" Dockerfile)
+          echo "TERRAFORM_VERSION=${TERRAFORM_VERSION}" >> $GITHUB_ENV
+          echo "TERRAFORM_VERSION=${TERRAFORM_VERSION}"
 
       - name: Build and push
         uses: docker/build-push-action@v6
@@ -52,7 +52,7 @@ jobs:
           cache-to: type=gha,mode=max
           push: true
           tags: |
-            opslabhq/terraform:${{ env.IMAGE_VERSION }}-alpine${{ env.ALPINE_VERSION }}
-            opslabhq/terraform:${{ env.IMAGE_VERSION }}
-            opslabhq/terraform:alpine${{ env.ALPINE_VERSION }}
+            opslabhq/terraform:${{ env.TERRAFORM_VERSION }}-alpine${{ env.IMAGE_VERSION }}
+            opslabhq/terraform:${{ env.TERRAFORM_VERSION }}
+            opslabhq/terraform:alpine${{ env.IMAGE_VERSION }}
             opslabhq/terraform:latest

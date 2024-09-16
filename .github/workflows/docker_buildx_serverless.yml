@@ -34,13 +34,13 @@ jobs:
         run: |
           cd serverless
 
-          ALPINE_VERSION=$(grep -oP '^ARG ALPINE_VERSION=\K.*' Dockerfile)
-          echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
-          echo "ALPINE_VERSION=${ALPINE_VERSION}"
-
-          IMAGE_VERSION=$(grep -oP "^ARG SERVERLESS_VERSION=\K.*" Dockerfile)
+          IMAGE_VERSION=$(grep -oP '^ARG IMAGE_VERSION=\K.*' Dockerfile)
           echo "IMAGE_VERSION=${IMAGE_VERSION}" >> $GITHUB_ENV
           echo "IMAGE_VERSION=${IMAGE_VERSION}"
+
+          SERVERLESS_VERSION=$(grep -oP "^ARG SERVERLESS_VERSION=\K.*" Dockerfile)
+          echo "SERVERLESS_VERSION=${SERVERLESS_VERSION}" >> $GITHUB_ENV
+          echo "SERVERLESS_VERSION=${SERVERLESS_VERSION}"
 
       - name: Build and push
         uses: docker/build-push-action@v6
@@ -52,7 +52,7 @@ jobs:
           cache-to: type=gha,mode=max
           push: true
           tags: |
-            opslabhq/serverless:${{ env.IMAGE_VERSION }}-alpine${{ env.ALPINE_VERSION }}
-            opslabhq/serverless:${{ env.IMAGE_VERSION }}
-            opslabhq/serverless:alpine${{ env.ALPINE_VERSION }}
+            opslabhq/serverless:${{ env.SERVERLESS_VERSION }}-alpine${{ env.IMAGE_VERSION }}
+            opslabhq/serverless:${{ env.SERVERLESS_VERSION }}
+            opslabhq/serverless:alpine${{ env.IMAGE_VERSION }}
             opslabhq/serverless:latest

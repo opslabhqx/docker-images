@@ -19,9 +19,9 @@
 The Docker image is tagged as follows:
 
 - `opslabhq/serverless:latest` - The latest stable version.
-- `opslabhq/serverless:${{ env.IMAGE_VERSION }}-alpine${{ env.ALPINE_VERSION }}` - Specific version with Alpine tag.
-- `opslabhq/serverless:${{ env.IMAGE_VERSION }}` - Specific version.
-- `opslabhq/serverless:alpine${{ env.ALPINE_VERSION }}` - Alpine version.
+- `opslabhq/serverless:${{ env.SERVERLESS_VERSION }}-alpine${{ env.IMAGE_VERSION }}` - Specific version with Alpine tag.
+- `opslabhq/serverless:${{ env.SERVERLESS_VERSION }}` - Specific version.
+- `opslabhq/serverless:alpine${{ env.IMAGE_VERSION }}` - Alpine version.
 
 ## Usage
 

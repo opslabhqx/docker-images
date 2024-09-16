@@ -5,7 +5,7 @@ ARG IMAGE_VERSION=3.20.3
 
 FROM opslabhq/alpine:${IMAGE_VERSION} AS base
 
-RUN apk add --no-cache aws-cli curl jq \
+RUN apk add --no-cache aws-cli git curl jq ca-certificates \
     && ln -s $(which aws) /bin/aws-cli
 
 FROM base AS final

@@ -19,9 +19,9 @@
 The Docker image is tagged as follows:
 
 - `opslabhq/packer:latest` - The latest stable version.
-- `opslabhq/packer:${{ env.IMAGE_VERSION }}-alpine${{ env.ALPINE_VERSION }}` - Specific version with Alpine tag.
-- `opslabhq/packer:${{ env.IMAGE_VERSION }}` - Specific version.
-- `opslabhq/packer:alpine${{ env.ALPINE_VERSION }}` - Alpine version.
+- `opslabhq/packer:${{ env.PACKER_VERSION }}-alpine${{ env.IMAGE_VERSION }}` - Specific version with Alpine tag.
+- `opslabhq/packer:${{ env.PACKER_VERSION }}` - Specific version.
+- `opslabhq/packer:alpine${{ env.IMAGE_VERSION }}` - Alpine version.
 
 ## Usage
 

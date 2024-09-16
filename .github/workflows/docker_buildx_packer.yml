@@ -34,13 +34,13 @@ jobs:
         run: |
           cd packer
 
-          ALPINE_VERSION=$(grep -oP '^ARG ALPINE_VERSION=\K.*' Dockerfile)
-          echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
-          echo "ALPINE_VERSION=${ALPINE_VERSION}"
-
-          IMAGE_VERSION=$(grep -oP "^ARG PACKER_VERSION=\K.*" Dockerfile)
+          IMAGE_VERSION=$(grep -oP '^ARG IMAGE_VERSION=\K.*' Dockerfile)
           echo "IMAGE_VERSION=${IMAGE_VERSION}" >> $GITHUB_ENV
           echo "IMAGE_VERSION=${IMAGE_VERSION}"
+
+          PACKER_VERSION=$(grep -oP "^ARG PACKER_VERSION=\K.*" Dockerfile)
+          echo "PACKER_VERSION=${PACKER_VERSION}" >> $GITHUB_ENV
+          echo "PACKER_VERSION=${PACKER_VERSION}"
 
       - name: Build and push
         uses: docker/build-push-action@v6
@@ -52,7 +52,7 @@ jobs:
           cache-to: type=gha,mode=max
           push: true
           tags: |
-            opslabhq/packer:${{ env.IMAGE_VERSION }}-alpine${{ env.ALPINE_VERSION }}
-            opslabhq/packer:${{ env.IMAGE_VERSION }}
-            opslabhq/packer:alpine${{ env.ALPINE_VERSION }}
+            opslabhq/packer:${{ env.PACKER_VERSION }}-alpine${{ env.IMAGE_VERSION }}
+            opslabhq/packer:${{ env.PACKER_VERSION }}
+            opslabhq/packer:alpine${{ env.IMAGE_VERSION }}
             opslabhq/packer:latest

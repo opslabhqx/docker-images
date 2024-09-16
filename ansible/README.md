@@ -19,9 +19,9 @@
 The Docker image is tagged as follows:
 
 - `opslabhq/ansible:latest` - The latest stable version.
-- `opslabhq/ansible:${{ env.IMAGE_VERSION }}-alpine${{ env.ALPINE_VERSION }}` - Specific version with Alpine tag.
-- `opslabhq/ansible:${{ env.IMAGE_VERSION }}` - Specific version.
-- `opslabhq/ansible:alpine${{ env.ALPINE_VERSION }}` - Alpine version.
+- `opslabhq/ansible:${{ env.ANSIBLE_VERSION }}-alpine${{ env.IMAGE_VERSION }}` - Specific version with Alpine tag.
+- `opslabhq/ansible:${{ env.ANSIBLE_VERSION }}` - Specific version.
+- `opslabhq/ansible:alpine${{ env.IMAGE_VERSION }}` - Alpine version.
 
 ## Usage
 

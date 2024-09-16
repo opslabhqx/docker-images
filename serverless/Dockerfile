@@ -1,22 +1,17 @@
 # syntax=docker/dockerfile:1
 
-# renovate: datasource=docker depName=alpine
-ARG ALPINE_VERSION=3.20.3
+# renovate: datasource=docker depName=opslabhq/alpine-ci
+ARG IMAGE_VERSION=3.20.3
 
-FROM alpine:${ALPINE_VERSION} AS base
+FROM opslabhq/alpine-ci:${IMAGE_VERSION} AS base
 
 FROM base AS final
 
 # renovate: datasource=npm depName=serverless
 ARG SERVERLESS_VERSION=4.3.2
 
-RUN apk add --no-cache bash nodejs npm aws-cli \
-    && ln -s $(which aws) /bin/aws-cli
+RUN apk add --no-cache nodejs npm
 
-RUN npm install -g serverless@$SERVERLESS_VERSION
-
-RUN mkdir -p /var/cache/apk \
-    && ln -s /var/cache/apk /etc/apk/cache \
-    && rm -rf /var/cache/apk/*
+RUN npm install -g serverless@${SERVERLESS_VERSION}
 
 USER root

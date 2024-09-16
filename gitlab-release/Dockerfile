@@ -10,19 +10,19 @@ FROM base AS build
 # renovate: datasource=gitlab-releases depName=gitlab-org/release-cli
 ARG GITLAB_RELEASE_VERSION=v0.18.0
 
-RUN ARCH=$(uname -m) && \
-    if [ "$ARCH" = "aarch64" ]; then \
-        export ARCH=arm64; \
-    else \
-        export ARCH=amd64; \
-    fi \
-    && echo $ARCH > /tmp/ARCH
+RUN case `uname -m` in \
+    x86_64) ARCH=amd64; ;; \
+    aarch64) ARCH=arm64; ;; \
+    *) echo "un-supported arch, exit ..."; exit 1; ;; \
+    esac \
+    && echo $ARCH > /tmp/ARCH \
+    && cat /tmp/ARCH
 
 RUN apk add --no-cache bash curl jq
 
 RUN export ARCH=$(cat /tmp/ARCH) \
     && echo $ARCH \
-    && curl --location --output /usr/local/bin/release-cli "https://gitlab.com/gitlab-org/release-cli/-/releases/$GITLAB_RELEASE_VERSION/downloads/bin/release-cli-linux-$ARCH" \
+    && curl --location --output /usr/local/bin/release-cli "https://gitlab.com/gitlab-org/release-cli/-/releases/${GITLAB_RELEASE_VERSION}/downloads/bin/release-cli-linux-${ARCH}" \
     && chmod +x /usr/local/bin/release-cli \
     && release-cli --version
 

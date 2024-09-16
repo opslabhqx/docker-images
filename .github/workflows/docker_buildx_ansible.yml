@@ -34,13 +34,13 @@ jobs:
         run: |
           cd ansible
 
-          ALPINE_VERSION=$(grep -oP '^ARG ALPINE_VERSION=\K.*' Dockerfile)
-          echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
-          echo "ALPINE_VERSION=${ALPINE_VERSION}"
-
-          IMAGE_VERSION=$(grep -oP "^ARG ANSIBLE_VERSION=\K.*" Dockerfile)
+          IMAGE_VERSION=$(grep -oP '^ARG IMAGE_VERSION=\K.*' Dockerfile)
           echo "IMAGE_VERSION=${IMAGE_VERSION}" >> $GITHUB_ENV
           echo "IMAGE_VERSION=${IMAGE_VERSION}"
+
+          ANSIBLE_VERSION=$(grep -oP "^ARG ANSIBLE_VERSION=\K.*" Dockerfile)
+          echo "ANSIBLE_VERSION=${ANSIBLE_VERSION}" >> $GITHUB_ENV
+          echo "ANSIBLE_VERSION=${ANSIBLE_VERSION}"
 
       - name: Build and push
         uses: docker/build-push-action@v6
@@ -52,7 +52,7 @@ jobs:
           cache-to: type=gha,mode=max
           push: true
           tags: |
-            opslabhq/ansible:${{ env.IMAGE_VERSION }}-alpine${{ env.ALPINE_VERSION }}
-            opslabhq/ansible:${{ env.IMAGE_VERSION }}
-            opslabhq/ansible:alpine${{ env.ALPINE_VERSION }}
+            opslabhq/ansible:${{ env.ANSIBLE_VERSION }}-alpine${{ env.IMAGE_VERSION }}
+            opslabhq/ansible:${{ env.ANSIBLE_VERSION }}
+            opslabhq/ansible:alpine${{ env.IMAGE_VERSION }}
             opslabhq/ansible:latest
