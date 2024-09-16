@@ -8,7 +8,7 @@ FROM opslabhq/alpine-ci:${IMAGE_VERSION} AS base
 FROM base AS final
 
 # renovate: datasource=npm depName=serverless
-ARG SERVERLESS_VERSION=4.3.2
+ARG SERVERLESS_VERSION=4.3.3
 
 RUN apk add --no-cache nodejs npm
 
