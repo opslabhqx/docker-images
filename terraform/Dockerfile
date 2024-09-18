@@ -8,7 +8,7 @@ FROM opslabhq/alpine-ci:${IMAGE_VERSION} AS base
 FROM base AS build
 
 # renovate: datasource=github-releases depName=hashicorp/terraform
-ARG TERRAFORM_VERSION=1.9.5
+ARG TERRAFORM_VERSION=1.9.6
 # renovate: datasource=github-releases depName=gruntwork-io/terragrunt
 ARG TERRAGRUNT_VERSION=0.67.8
 # renovate: datasource=github-releases depName=terraform-docs/terraform-docs
