@@ -17,7 +17,7 @@ permissions:
   contents: read
 
 jobs:
-  build-docker-packer:
+  build-pr-packer:
     runs-on: ubuntu-latest
     permissions:
       contents: read

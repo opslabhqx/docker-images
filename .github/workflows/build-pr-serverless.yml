@@ -17,7 +17,7 @@ permissions:
   contents: read
 
 jobs:
-  build-docker-serverless:
+  build-pr-serverless:
     runs-on: ubuntu-latest
     permissions:
       contents: read

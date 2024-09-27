@@ -17,7 +17,7 @@ permissions:
   contents: read
 
 jobs:
-  build-docker-cookiecutter:
+  build-pr-cookiecutter:
     runs-on: ubuntu-latest
     permissions:
       contents: read
