@@ -8,7 +8,7 @@ FROM alpine:${BASE_VERSION} AS base
 LABEL maintainer="Anthony Yung <yhs88a@gmail.com>" \
     org.opencontainers.image.source="https://github.com/opslabhqx/docker-images"
 
-RUN apk add --no-cache bash python3
+RUN apk add --no-cache sudo bash python3
 
 FROM base AS build
 
