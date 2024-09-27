@@ -1,5 +1,9 @@
 # miniconda
 
+![Build status](https://github.com/opslabhqx/docker-images/actions/workflows/build-push-miniconda.yml/badge.svg)
+![Docker Image Size (latest)](https://img.shields.io/docker/image-size/opslabhq/miniconda/latest)
+![Licence: MIT](https://img.shields.io/github/license/opslabhqx/docker-images)
+
 ## Description
 
 `miniconda` Docker image. It is maintained and published under the `opslabhq` Docker Hub account.
@@ -11,6 +15,7 @@
 - **Image Name**: `miniconda`
 - **Docker Hub Username**: `opslabhq`
 - **Supported Platforms**: `linux/amd64,linux/arm64`
+- **Base Image**: `ubuntu`
 - **Datasource**: `github-releases`
 - **Depname**: `conda/conda`
 
@@ -18,10 +23,12 @@
 
 The Docker image is tagged as follows:
 
-- `opslabhq/miniconda:latest` - The latest stable version.
-- `opslabhq/miniconda:${{ env.IMAGE_VERSION }}-ubuntu${{ env.UBUNTU_VERSION }}` - Specific version with Alpine tag.
-- `opslabhq/miniconda:${{ env.IMAGE_VERSION }}` - Specific version.
-- `opslabhq/miniconda:ubuntu${{ env.UBUNTU_VERSION }}` - Alpine version.
+```
+"${OWNER}/${FILE}:${TAG}"
+"${OWNER}/${FILE}:${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}:${TAG}-${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}"
+```
 
 ## Usage
 

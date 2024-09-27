@@ -1,5 +1,9 @@
 # gitlab-release
 
+![Build status](https://github.com/opslabhqx/docker-images/actions/workflows/build-push-gitlab-release.yml/badge.svg)
+![Docker Image Size (latest)](https://img.shields.io/docker/image-size/opslabhq/gitlab-release/latest)
+![Licence: MIT](https://img.shields.io/github/license/opslabhqx/docker-images)
+
 ## Description
 
 `gitlab-release` Docker image. It is maintained and published under the `opslabhq` Docker Hub account.
@@ -11,6 +15,7 @@
 - **Image Name**: `gitlab-release`
 - **Docker Hub Username**: `opslabhq`
 - **Supported Platforms**: `linux/amd64,linux/arm64`
+- **Base Image**: `alpine`
 - **Datasource**: `gitlab-releases`
 - **Depname**: `gitlab-org/release-cli`
 
@@ -18,10 +23,14 @@
 
 The Docker image is tagged as follows:
 
-- `opslabhq/gitlab-release:${{ env.GITLAB_RELEASE_VERSION }}-alpine${{ env.IMAGE_VERSION }}`
-- `opslabhq/gitlab-release:${{ env.GITLAB_RELEASE_VERSION }}`
-- `opslabhq/gitlab-release:alpine${{ env.IMAGE_VERSION }}`
-- `opslabhq/gitlab-release:latest`
+```
+"${OWNER}/${FILE}:${TAG}"
+"${OWNER}/${FILE}:${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}:${TAG}-${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}"
+"${OWNER}/${FILE}:${TAG}-rootless"
+"${OWNER}/${FILE}:rootless"
+```
 
 ## Usage
 

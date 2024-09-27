@@ -1,5 +1,9 @@
 # terraform
 
+![Build status](https://github.com/opslabhqx/docker-images/actions/workflows/build-push-terraform.yml/badge.svg)
+![Docker Image Size (latest)](https://img.shields.io/docker/image-size/opslabhq/terraform/latest)
+![Licence: MIT](https://img.shields.io/github/license/opslabhqx/docker-images)
+
 ## Description
 
 `terraform` Docker image. It is maintained and published under the `opslabhq` Docker Hub account.
@@ -11,6 +15,7 @@
 - **Image Name**: `terraform`
 - **Docker Hub Username**: `opslabhq`
 - **Supported Platforms**: `linux/amd64,linux/arm64`
+- **Base Image**: `alpine`
 - **Datasource**: `github-releases`
 - **Depname**: `hashicorp/terraform`
 
@@ -18,10 +23,14 @@
 
 The Docker image is tagged as follows:
 
-- `opslabhq/terraform:latest` - The latest stable version.
-- `opslabhq/terraform:${{ env.TERRAFORM_VERSION }}-alpine${{ env.IMAGE_VERSION }}` - Specific version with Alpine tag.
-- `opslabhq/terraform:${{ env.TERRAFORM_VERSION }}` - Specific version.
-- `opslabhq/terraform:alpine${{ env.IMAGE_VERSION }}` - Alpine version.
+```
+"${OWNER}/${FILE}:${TAG}"
+"${OWNER}/${FILE}:${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}:${TAG}-${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}"
+"${OWNER}/${FILE}:${TAG}-rootless"
+"${OWNER}/${FILE}:rootless"
+```
 
 ## Usage
 

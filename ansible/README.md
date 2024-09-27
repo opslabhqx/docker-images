@@ -1,5 +1,9 @@
 # ansible
 
+![Build status](https://github.com/opslabhqx/docker-images/actions/workflows/build-push-ansible.yml/badge.svg)
+![Docker Image Size (latest)](https://img.shields.io/docker/image-size/opslabhq/ansible/latest)
+![Licence: MIT](https://img.shields.io/github/license/opslabhqx/docker-images)
+
 ## Description
 
 `ansible` Docker image. It is maintained and published under the `opslabhq` Docker Hub account.
@@ -11,6 +15,7 @@
 - **Image Name**: `ansible`
 - **Docker Hub Username**: `opslabhq`
 - **Supported Platforms**: `linux/amd64,linux/arm64`
+- **Base Image**: `alpine`
 - **Datasource**: `pypi`
 - **Depname**: `ansible`
 
@@ -18,10 +23,14 @@
 
 The Docker image is tagged as follows:
 
-- `opslabhq/ansible:latest` - The latest stable version.
-- `opslabhq/ansible:${{ env.ANSIBLE_VERSION }}-alpine${{ env.IMAGE_VERSION }}` - Specific version with Alpine tag.
-- `opslabhq/ansible:${{ env.ANSIBLE_VERSION }}` - Specific version.
-- `opslabhq/ansible:alpine${{ env.IMAGE_VERSION }}` - Alpine version.
+```
+"${OWNER}/${FILE}:${TAG}"
+"${OWNER}/${FILE}:${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}:${TAG}-${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}"
+"${OWNER}/${FILE}:${TAG}-rootless"
+"${OWNER}/${FILE}:rootless"
+```
 
 ## Usage
 

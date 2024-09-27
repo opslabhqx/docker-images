@@ -15,6 +15,7 @@
 - **Image Name**: `yamllint`
 - **Docker Hub Username**: `opslabhq`
 - **Supported Platforms**: `linux/amd64,linux/arm64`
+- **Base Image**: `alpine`
 - **Datasource**: `pypi`
 - **Depname**: `yamllint`
 

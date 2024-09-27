@@ -1,5 +1,5 @@
 ---
-name: build-pr yamllint
+name: build-pr miniconda
 
 on:
   merge_group:
@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - 'yamllint/**'
+      - 'miniconda/**'
     types:
       - opened
       - synchronize
@@ -17,7 +17,7 @@ permissions:
   contents: read
 
 jobs:
-  build-docker-yamllint:
+  build-docker-miniconda:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -38,4 +38,4 @@ jobs:
         uses: docker/bake-action@v5
         with:
           targets: test
-          workdir: ./yamllint
+          workdir: ./miniconda

@@ -1,5 +1,9 @@
 # serverless
 
+![Build status](https://github.com/opslabhqx/docker-images/actions/workflows/build-push-serverless.yml/badge.svg)
+![Docker Image Size (latest)](https://img.shields.io/docker/image-size/opslabhq/serverless/latest)
+![Licence: MIT](https://img.shields.io/github/license/opslabhqx/docker-images)
+
 ## Description
 
 `serverless` Docker image. It is maintained and published under the `opslabhq` Docker Hub account.
@@ -11,6 +15,7 @@
 - **Image Name**: `serverless`
 - **Docker Hub Username**: `opslabhq`
 - **Supported Platforms**: `linux/amd64,linux/arm64`
+- **Base Image**: `alpine`
 - **Datasource**: `github-releases`
 - **Depname**: `serverless/serverless`
 
@@ -18,10 +23,14 @@
 
 The Docker image is tagged as follows:
 
-- `opslabhq/serverless:latest` - The latest stable version.
-- `opslabhq/serverless:${{ env.SERVERLESS_VERSION }}-alpine${{ env.IMAGE_VERSION }}` - Specific version with Alpine tag.
-- `opslabhq/serverless:${{ env.SERVERLESS_VERSION }}` - Specific version.
-- `opslabhq/serverless:alpine${{ env.IMAGE_VERSION }}` - Alpine version.
+```
+"${OWNER}/${FILE}:${TAG}"
+"${OWNER}/${FILE}:${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}:${TAG}-${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}"
+"${OWNER}/${FILE}:${TAG}-rootless"
+"${OWNER}/${FILE}:rootless"
+```
 
 ## Usage
 
