@@ -64,10 +64,10 @@ jobs:
         uses: docker/bake-action@v5
         with:
           targets: push
-          workdir: ./${FILE}
+          workdir: ./yamllint
 
       - name: Push Rootless
         uses: docker/bake-action@v5
         with:
           targets: push-rootless
-          workdir: ./${FILE}
+          workdir: ./yamllint
