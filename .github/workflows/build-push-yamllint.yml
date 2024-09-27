@@ -54,9 +54,9 @@ jobs:
           echo "BASE_VERSION=${BASE_VERSION,,#v}" >> $GITHUB_ENV
           echo "BASE_VERSION=${BASE_VERSION,,#v}"
 
-          IMAGE_VERSION=$(grep -oP "^ARG IMAGE_VERSION=\K.*" Dockerfile)
-          echo "IMAGE_VERSION=${IMAGE_VERSION,,#v}" >> $GITHUB_ENV
-          echo "IMAGE_VERSION=${IMAGE_VERSION,,#v}"
+          TAG=$(grep -oP "^ARG IMAGE_VERSION=\K.*" Dockerfile)
+          echo "TAG=${TAG,,#v}" >> $GITHUB_ENV
+          echo "TAG=${TAG,,#v}"
 
           cd ..
 
