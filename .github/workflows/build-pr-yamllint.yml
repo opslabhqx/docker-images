@@ -1,0 +1,44 @@
+---
+name: build-pr yamllint
+
+on:
+  merge_group:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'yamllint/**'
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+env:
+  FILE: yamllint
+
+permissions:
+  contents: read
+
+jobs:
+  build-docker-yamllint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+
+    steps:
+      - uses: actions/checkout@v4.2.0
+        with:
+          show-progress: false
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Test
+        uses: docker/bake-action@v5
+        with:
+          targets: test
+          workdir: ./${FILE}

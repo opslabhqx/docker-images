@@ -1,5 +1,9 @@
 # yamllint
 
+![Build status](https://github.com/opslabhqx/docker-images/actions/workflows/build-push-yamllint.yml/badge.svg)
+![Docker Image Size (latest)](https://img.shields.io/docker/image-size/opslabhq/yamllint/latest)
+![Licence: MIT](https://img.shields.io/github/license/opslabhqx/docker-images)
+
 ## Description
 
 `yamllint` Docker image. It is maintained and published under the `opslabhq` Docker Hub account.
@@ -18,10 +22,14 @@
 
 The Docker image is tagged as follows:
 
-- `opslabhq/yamllint:latest` - The latest stable version.
-- `opslabhq/yamllint:${{ env.IMAGE_VERSION }}-alpine${{ env.ALPINE_VERSION }}` - Specific version with Alpine tag.
-- `opslabhq/yamllint:${{ env.IMAGE_VERSION }}` - Specific version.
-- `opslabhq/yamllint:alpine${{ env.ALPINE_VERSION }}` - Alpine version.
+```
+"${OWNER}/${FILE}:${TAG}"
+"${OWNER}/${FILE}:${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}:${TAG}-${BASE_IMAGE}${BASE_VERSION}"
+"${OWNER}/${FILE}"
+"${OWNER}/${FILE}:${TAG}-rootless"
+"${OWNER}/${FILE}:rootless"
+```
 
 ## Usage
 
