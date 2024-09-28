@@ -50,11 +50,11 @@ jobs:
           echo "FILE=${FILE,,}" >> $GITHUB_ENV
           echo "FILE=${FILE,,}"
 
-          BASE_VERSION=$(grep -oP '^ARG BASE_VERSION=\K.*' Dockerfile)
+          BASE_VERSION=$(sed -n 's/^ARG BASE_VERSION=\([0-9.]*\).*/\1/p' Dockerfile)
           echo "BASE_VERSION=${BASE_VERSION#v}" >> $GITHUB_ENV
           echo "BASE_VERSION=${BASE_VERSION#v}"
 
-          TAG=$(grep -oP "^ARG IMAGE_VERSION=\K.*" Dockerfile)
+          TAG=$(sed -n 's/^ARG IMAGE_VERSION=\([0-9.]*\).*/\1/p' Dockerfile)
           echo "TAG=${TAG#v}" >> $GITHUB_ENV
           echo "TAG=${TAG#v}"
 
