@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 
-# renovate: datasource=docker depName=ubuntu
+# renovate: datasource=docker depName=opslabhq/ubuntu
 ARG BASE_VERSION=jammy
 
-FROM ubuntu:${BASE_VERSION} AS base
+FROM opslabhq/ubuntu:${BASE_VERSION} AS base
 
 LABEL maintainer="Anthony Yung <yhs88a@gmail.com>" \
     org.opencontainers.image.source="https://github.com/opslabhqx/docker-images"
