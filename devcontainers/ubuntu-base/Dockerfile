@@ -28,7 +28,6 @@ RUN touch ~/.bashrc \
     && echo "HISTFILESIZE=10000" >> ~/.bashrc \
     && echo "shopt -s histappend" >> ~/.bashrc \
     && echo 'PROMPT_COMMAND="history -a; $PROMPT_COMMAND"' >> ~/.bashrc \
-    && (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> ~/.bashrc \
     && touch ~/.bash_history \
     && chmod 600 ~/.bash_history
 
@@ -42,6 +41,5 @@ RUN touch ~/.zshrc \
     && echo "SAVEHIST=10000" >> ~/.zshrc \
     && echo "setopt INC_APPEND_HISTORY" >> ~/.zshrc \
     && echo "setopt SHARE_HISTORY" >> ~/.zshrc \
-    && echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.zshrc \
     && touch ~/.zsh_history \
     && chmod 600 ~/.zsh_history
