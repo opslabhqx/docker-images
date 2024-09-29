@@ -22,7 +22,7 @@ RUN adduser --disabled-password --gecos "" $USER \
 USER $USER
 WORKDIR $HOME
 
-RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+RUN touch ~/.bashrc \
     && echo "HISTFILE=~/.bash_history" >> ~/.bashrc \
     && echo "HISTSIZE=10000" >> ~/.bashrc \
     && echo "HISTFILESIZE=10000" >> ~/.bashrc \
