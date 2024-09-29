@@ -1,6 +1,6 @@
 # gitlab-release
 
-![Build status](https://github.com/opslabhqx/docker-images/actions/workflows/build-push-gitlab-release.yml/badge.svg)
+![Build status](https://github.com/opslabhqx/docker-images/actions/workflows/build-push-ci-gitlab-release.yml/badge.svg)
 ![Docker Image Size (latest)](https://img.shields.io/docker/image-size/opslabhq/gitlab-release/latest)
 ![Licence: MIT](https://img.shields.io/github/license/opslabhqx/docker-images)
 
@@ -13,6 +13,7 @@
 ## Docker Image
 
 - **Image Name**: `gitlab-release`
+- **Group**: `ci`
 - **Docker Hub Username**: `opslabhq`
 - **Supported Platforms**: `linux/amd64,linux/arm64`
 - **Base Image**: `alpine`

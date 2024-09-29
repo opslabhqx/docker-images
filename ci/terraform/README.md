@@ -13,6 +13,7 @@
 ## Docker Image
 
 - **Image Name**: `terraform`
+- **Group**: `ci`
 - **Docker Hub Username**: `opslabhq`
 - **Supported Platforms**: `linux/amd64,linux/arm64`
 - **Base Image**: `alpine`
