@@ -68,8 +68,8 @@ target "push" {
     "${OWNER}/${FILE}:${TAG}-${BASE_IMAGE}${BASE_VERSION}",
     "public.ecr.aws/${OWNER}/${GROUP}/${FILE}",
     "public.ecr.aws/${OWNER}/${GROUP}/${FILE}:${TAG}",
-    "public.ecr.aws/${OWNER}/${GROUP}/${BASE_IMAGE}${BASE_VERSION}",
-    "public.ecr.aws/${OWNER}/${GROUP}/${TAG}-${BASE_IMAGE}${BASE_VERSION}",
+    "public.ecr.aws/${OWNER}/${GROUP}/${FILE}:${BASE_IMAGE}${BASE_VERSION}",
+    "public.ecr.aws/${OWNER}/${GROUP}/${FILE}:${TAG}-${BASE_IMAGE}${BASE_VERSION}",
   ]
 }
 
