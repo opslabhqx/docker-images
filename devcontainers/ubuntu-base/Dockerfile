@@ -8,6 +8,14 @@ FROM opslabhq/ubuntu:${BASE_VERSION} AS base
 LABEL maintainer="Anthony Yung <yhs88a@gmail.com>" \
     org.opencontainers.image.source="https://github.com/opslabhqx/docker-images"
 
+RUN case `uname -m` in \
+    x86_64) ARCH=x86_64; ;; \
+    aarch64) ARCH=aarch64; ;; \
+    *) echo "un-supported arch, exit ..."; exit 1; ;; \
+    esac \
+    && echo $ARCH > /tmp/ARCH \
+    && cat /tmp/ARCH
+
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y --no-install-recommends sudo git curl ca-certificates build-essential zsh nano
 
@@ -43,3 +51,23 @@ RUN touch ~/.zshrc \
     && echo "setopt SHARE_HISTORY" >> ~/.zshrc \
     && touch ~/.zsh_history \
     && chmod 600 ~/.zsh_history
+
+FROM base AS build
+
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get install -y --no-install-recommends unzip
+
+RUN export ARCH=$(cat /tmp/ARCH) \
+    && curl "https://awscli.amazonaws.com/awscli-exe-linux-${ARCH}.zip" -o "awscliv2.zip" \
+    && unzip awscliv2.zip \
+    && sudo ./aws/install
+
+FROM base AS final
+
+COPY --from=build /usr/local/aws-cli /usr/local/aws-cli
+
+RUN ln -s /usr/local/aws-cli/v2/current/bin/aws /usr/local/bin/aws \
+    && ln -s /usr/local/aws-cli/v2/current/bin/aws_completer /usr/local/bin/aws_completer \
+    && ln -s $(which aws) /usr/local/bin/aws-cli
+
+RUN chmod +x /usr/local/bin/*
