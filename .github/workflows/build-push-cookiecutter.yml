@@ -61,13 +61,13 @@ jobs:
           cd ..
 
       - name: Push
-        uses: docker/bake-action@e626c7390c9f95508a135a89e65ec698e061fb2a # v5
+        uses: docker/bake-action@64673bcfac9f7517fc75e79db735fdb62efe6c55 # v5
         with:
           targets: push
           workdir: ./cookiecutter
 
       - name: Push Rootless
-        uses: docker/bake-action@e626c7390c9f95508a135a89e65ec698e061fb2a # v5
+        uses: docker/bake-action@64673bcfac9f7517fc75e79db735fdb62efe6c55 # v5
         with:
           targets: push-rootless
           workdir: ./cookiecutter
