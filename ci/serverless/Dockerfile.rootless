@@ -11,7 +11,7 @@ LABEL maintainer="Anthony Yung <yhs88a@gmail.com>" \
 FROM base AS final
 
 # renovate: datasource=npm depName=serverless
-ARG IMAGE_VERSION=4.4.3
+ARG IMAGE_VERSION=4.4.4
 
 RUN apk add --no-cache nodejs npm
 
