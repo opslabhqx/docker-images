@@ -14,7 +14,7 @@ RUN apt-get update \
 FROM base AS final
 
 # renovate: datasource=github-releases depName=conda/conda
-ARG IMAGE_VERSION=24.7.1
+ARG IMAGE_VERSION=24.9.1
 
 RUN case `uname -m` in \
     x86_64) ARCH=x86_64; ;; \
