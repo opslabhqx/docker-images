@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1@sha256:865e5dd094beca432e8c0a1d5e1c465db5f998dca4e439981029b3b81fb39ed5
 
 # renovate: datasource=docker depName=opslabhq/alpine-ci
-ARG BASE_VERSION=3.20.3@sha256:2d3dea7c9bec65f9dd9147e63ee74a30b594e5ad5b415db446857e90b02e03d0
+ARG BASE_VERSION=3.20.3@sha256:40189495e3275d244e577fc59ac662ee04f5b5780f6c9ab03c4d4557525b6c05
 
 FROM opslabhq/alpine-ci:${BASE_VERSION} AS base
 
