@@ -18,6 +18,8 @@
   },
   "workspaceFolder": "/home/vscode/docker-images",
   "features": {
+      "ghcr.io/opslabhqx/devcontainer/common-utils:1": {},
+      "ghcr.io/opslabhqx/devcontainer/aws-cli:1": {},
       "ghcr.io/opslabhqx/devcontainer/docker-in-docker:1": {}
   }
 }
