@@ -13,7 +13,7 @@ RUN apk add --no-cache sudo bash python3 openssh curl make libc6-compat
 FROM base AS build
 
 # renovate: datasource=pypi depName=ansible
-ARG IMAGE_VERSION=10.4.0
+ARG IMAGE_VERSION=10.5.0
 
 RUN case `uname -m` in \
     x86_64) ARCH=64bit; ;; \
