@@ -13,7 +13,7 @@ FROM base AS build
 # renovate: datasource=github-tags depName=kubernetes/kubectl
 ARG IMAGE_VERSION=1.17.5
 # renovate: datasource=github-releases depName=helm/helm
-ARG HELM_VERSION=3.16.1
+ARG HELM_VERSION=3.16.2
 # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
 ARG KUSTOMIZE_VERSION=v5.4.3
 
