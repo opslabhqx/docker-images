@@ -11,7 +11,7 @@ LABEL maintainer="Anthony Yung <yhs88a@gmail.com>" \
 FROM base AS build
 
 # renovate: datasource=github-releases depName=hashicorp/terraform
-ARG IMAGE_VERSION=1.9.7
+ARG IMAGE_VERSION=1.9.8
 # renovate: datasource=github-releases depName=gruntwork-io/terragrunt
 ARG TERRAGRUNT_VERSION=0.68.2
 # renovate: datasource=github-releases depName=terraform-docs/terraform-docs
