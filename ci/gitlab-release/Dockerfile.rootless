@@ -11,7 +11,7 @@ LABEL maintainer="Anthony Yung <yhs88a@gmail.com>" \
 FROM base AS build
 
 # renovate: datasource=gitlab-releases depName=gitlab-org/release-cli
-ARG IMAGE_VERSION=v0.18.0
+ARG IMAGE_VERSION=v0.19.0
 
 RUN case `uname -m` in \
     x86_64) ARCH=amd64; ;; \
